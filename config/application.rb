@@ -28,6 +28,9 @@ module TddRails
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    # i18n
+    config.i18n.default_locale = :'pt-BR'
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: false,

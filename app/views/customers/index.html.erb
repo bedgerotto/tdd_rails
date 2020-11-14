@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+  <span><%= flash[:notice] %></span>
+<% end %>
 <h1>Customer Index</h1>
 
 <%= link_to 'New Customer', new_customer_path %>
