@@ -13,6 +13,19 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+require 'capybara'
+require 'capybara/poltergeist'
+
+Capybara.javascript_driver = :poltergeist
+# Capybara.app_host = 'http://localhost:3001'
+
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new app
+end
+
+Capybara.default_max_wait_time = 5
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

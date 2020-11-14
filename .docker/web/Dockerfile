@@ -10,7 +10,7 @@ RUN apt update -qq \
                           libqt4-dev libqtwebkit-dev xvfb ffmpeg libpq-dev \
                           libzbar-dev gnupg2 gawk autoconf automake bison libffi-dev \
                           libgdbm-dev libncurses5-dev libsqlite3-dev libyaml-dev \
-                          libgmp-dev libreadline-dev libssl-dev git
+                          libgmp-dev libreadline-dev libssl-dev git phantomjs
 
 # Muda o locale do container para en_US.UTF-8
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \

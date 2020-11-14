@@ -38,8 +38,10 @@ services:
       - REDIS_PROVIDER=REDISCLOUD_URL
       - RUBY_VERSION=2.6.5
       - RUBY_MAJOR=2.6
+      - QT_QPA_PLATFORM=offscreen
     ports:
       - "3000:3000"
+      - "3001:3001"
     depends_on:
       - db
       - redis

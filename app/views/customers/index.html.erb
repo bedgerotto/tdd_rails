@@ -1,6 +1,32 @@
-<% if flash[:notice] %>
+<% if flash[:notice].present? %>
   <span><%= flash[:notice] %></span>
 <% end %>
 <h1>Customer Index</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name %></td>
+        <td>
+          <%= link_to 'Show', customer_path(customer) %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_customer_path(customer) %>
+        </td>
+        <td>
+          <%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'New Customer', new_customer_path %>

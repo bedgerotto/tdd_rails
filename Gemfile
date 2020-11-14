@@ -40,7 +40,9 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.6'
   gem 'capybara'
+  gem 'poltergeist'
   gem 'faker'
+  gem 'factory_bot_rails', '~> 4.0'
 end
 
 group :development do

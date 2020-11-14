@@ -33,7 +33,71 @@ feature 'Customers', type: :feature do
     choose option: ['Y', 'N'].sample
     click_on 'Create Customer'
 
-    expect(page).to have_content 'Customer Succesfully Stored'
+    expect(page).to have_content 'Customer Successfully Stored'
     expect(Customer.last.name).to eq(name)
   end
+
+  scenario 'Prevent invalid custmer' do
+    visit new_customer_path
+    click_on 'Create Customer'
+
+    expect(page).to have_content("não pode ficar em branco") 
+  end
+
+  scenario 'Show new Customer' do
+    customer = create :customer
+
+    visit customer_path(customer)
+    expect(page).to have_content(customer.name)
+    expect(page).to have_content(customer.email)
+    expect(page).to have_content(customer.phone)
+  end
+
+  scenario 'Customer index' do
+    customer1 = create :customer
+    customer2 = create :customer
+
+    visit customers_path
+    expect(page).to have_content(customer1.name).and have_content(customer2.name)
+  end
+
+  scenario 'Update Customer' do
+    customer = create :customer
+
+    new_name = Faker::Name.name
+    visit edit_customer_path(customer)
+    fill_in 'Name', with: new_name
+    click_on 'Update Customer'
+
+    expect(page).to have_content('Customer Successfully Updated') 
+    expect(page).to have_content(new_name)
+  end
+
+  scenario 'Click on show link' do
+    customer = create :customer
+
+    visit customers_path
+    find(:xpath, '/html/body/table/tbody/tr[1]/td[2]/a').click
+    expect(page).to have_content('Customer Show')
+  end
+
+  scenario 'Click on edit link' do
+    customer = create :customer
+
+    visit customers_path
+    find(:xpath, '/html/body/table/tbody/tr[1]/td[3]/a').click
+    expect(page).to have_content('Edit Customer')
+  end
+
+  scenario 'Click on destroy link', js: true do
+    customer = create :customer
+
+    visit customers_path
+    accept_alert do
+      find(:xpath, '/html/body/table/tbody/tr[1]/td[4]/a').click
+    end
+
+    expect(page).to have_content('Customer Successfully Destroyed')
+  end
 end
+

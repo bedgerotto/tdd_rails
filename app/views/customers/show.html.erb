@@ -1,0 +1,40 @@
+<% if flash[:notice].present? %>
+  <span><%= flash[:notice] %></span>
+<% end %>
+
+<h1>Customer Show</h1>
+
+<div class="form-group">
+  <span class="label">Name</span>
+  <div class="form-control">
+    <span class="text"><%= @customer.name %></span>
+  </div>
+</div>
+
+<div class="form-group">
+  <span class="label">Email</span>
+  <div class="form-control">
+    <span class="text"><%= @customer.email %></span>
+  </div>
+</div>
+
+<div class="form-group">
+  <span class="label">Phone</span>
+  <div class="form-control">
+    <span class="text"><%= @customer.phone %></span>
+  </div>
+</div>
+
+<div class="form-group">
+  <span class="label">Smoker?</span>
+  <div class="form-control">
+    <span class="text"><%= @customer.smoker %></span>
+  </div>
+</div>
+
+<div class="form-group">
+  <span class="label">Avatar</span>
+  <div class="form-control">
+    <span class="text"><%= @customer.avatar %></span>
+  </div>
+</div>
